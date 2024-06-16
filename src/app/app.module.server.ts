@@ -3,6 +3,7 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { Title } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -11,4 +12,11 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppServerModule {}
+export class AppServerModule {
+
+  constructor(private titulo:Title){
+    titulo.setTitle('Quién quiere ser Millonario');
+  }
+
+
+}

@@ -1,0 +1,33 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container text-center">
+  <h1 class="h1">¿Quién quiere ser millonario?</h1>
+  <div class="game-container">
+    <div id="puntaje">
+      Puntaje: {{puntaje}}
+    </div>
+      <div *ngIf="!juegoTerminado; else resultadoFinal">
+          <div id="pregunta" class="mb-3">
+              {{preguntas[preguntaIndex].pregunta}}
+          </div>
+          <div id="opciones" class="d-flex flex-wrap justify-content-center">
+              <button *ngFor="let opcion of preguntas[preguntaIndex]?.opciones" (click)="verificarRespuesta(opcion.charAt(0))"
+                      class="btn btn-primary opcion-button">
+                  {{opcion}}
+              </button>
+          </div>
+      </div>
+      <ng-template #resultadoFinal>
+          <div id="pregunta" class="mb-3">
+              Felicidades, terminaste el juego. Tu puntaje es: {{puntaje}}
+          </div>
+          <button (click)="reiniciarJuego()" class="btn btn-success">Reiniciar Juego</button>
+      </ng-template>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
